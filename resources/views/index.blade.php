@@ -30,7 +30,7 @@
 
 
     <div class="ideas-container space-y-6 my-6">
-        <div class="idea-container bg-white rounded-xl flex">
+        <div class="idea-container bg-white rounded-xl flex hover:shadow-md transition duration-150 ease-in cursor-pointer">
             <div class="border-r border-gray-100 px-5 py-8">
                 <div class="text-center">
                     <div class="font-semibold text-2xl">12</div>
@@ -48,7 +48,7 @@
                     <h4 class="text-xl font-semibold">
                         <a class="hover:underline" href="#">A random title goes here</a>
                     </h4>
-                    <div class="text-gray-500 mt-3">
+                    <div class="text-gray-500 mt-3 line-clamp-3">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo doloremque ex delectus expedita quas, non vel, molestias rerum soluta ipsa accusamus perferendis facilis harum aperiam tenetur laborum. Accusantium, quibusdam. Vel, voluptates? Non unde, eaque doloribus praesentium ut sint ea laboriosam quos vitae eum, ab in. Non quis ratione enim? Consequuntur!
                     </div>
 
@@ -58,7 +58,28 @@
                             <div>&bull;</div>
                             <div>Category 1</div>
                             <div>&bull;</div>
-                            <div>3 Comments</div>
+                            <div class="text-gray-900">3 Comments</div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
+                                Open
+                            </div>
+                            <button class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in px-3">
+                                <svg class="" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                 </svg>
+                                 <ul class="absolute text-left w-44 font-semibold bg-white rounded-xl shadow-lg py-3 ml-8">
+                                     <li>
+                                         <a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as Spam</a>
+                                        </li>
+                                     <li>
+                                         <a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete Post</a>
+                                    </li>
+                                 </ul>
+                            </button>
                         </div>
                     </div>
                 </div>
