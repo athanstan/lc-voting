@@ -27,4 +27,43 @@
 
         </div>
     </div>
+
+
+    <div class="ideas-container space-y-6 my-6">
+        <div class="idea-container bg-white rounded-xl flex">
+            <div class="border-r border-gray-100 px-5 py-8">
+                <div class="text-center">
+                    <div class="font-semibold text-2xl">12</div>
+                    <div class="text-gray-500">Votes</div>
+                </div>
+
+                <div class="mt-8"><button class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400 font-bold text-xxs uppercase rounded-xl px-4 py-3 transition duration-150 ease-in">Vote</button>
+                </div>
+            </div>
+            <div class="flex px-2 py-6">
+                <a href="#" class="flex-none">
+                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar" class="w-14 h-14 rounded-xl">
+                </a>
+                <div class="mx-4">
+                    <h4 class="text-xl font-semibold">
+                        <a class="hover:underline" href="#">A random title goes here</a>
+                    </h4>
+                    <div class="text-gray-500 mt-3">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo doloremque ex delectus expedita quas, non vel, molestias rerum soluta ipsa accusamus perferendis facilis harum aperiam tenetur laborum. Accusantium, quibusdam. Vel, voluptates? Non unde, eaque doloribus praesentium ut sint ea laboriosam quos vitae eum, ab in. Non quis ratione enim? Consequuntur!
+                    </div>
+
+                    <div class="flex items-center justify-between mt-6">
+                        <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
+                            <div>10 hours ago</div>
+                            <div>&bull;</div>
+                            <div>Category 1</div>
+                            <div>&bull;</div>
+                            <div>3 Comments</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </x-app-layout>

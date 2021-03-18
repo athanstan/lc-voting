@@ -19,6 +19,9 @@ module.exports = {
                 70: '17.5rem',
                 175: '43.75rem',
             },
+            fontSize: {
+                xxs: ['0.625rem', {lineHeight: '1rem'}],
+            }
         },
     },
 
