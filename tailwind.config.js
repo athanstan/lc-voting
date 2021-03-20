@@ -13,7 +13,7 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             maxWidth: {
-                custom: '62.5rem',
+                custom: '68.5rem',
             },
             spacing: {
                 70: '17.5rem',
