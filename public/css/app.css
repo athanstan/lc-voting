@@ -31993,6 +31993,52 @@ select {
   -webkit-line-clamp: unset;
 }
 
+.comments-container::before{
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 21px;
+  content: "";
+  width: 3px;
+  height: 100%;
+  background: #78909c;
+  opacity: .07;
+}
+
+.comment-container::before{
+  position: absolute;
+  display: block;
+  top: 57px;
+  content: "";
+  width: 23px;
+  height: 3px;
+  left: -40px;
+  background: #78909c;
+  opacity: .07;
+}
+
+.comment-container:last-child::after{
+  position: absolute;
+  display: block;
+  top: 60px;
+  content: "";
+  width: 3px;
+  height: calc(100% - 60px);
+  left: -43px;
+  background: #F3F4F6 ;
+}
+
+.is-admin::before{
+  width: 38px;
+  height: 38px;
+  border-radius: 38px;
+  border: 7px solid white;
+  box-shadow: 4px 4px 15px 0 rgba(36, 37, 38, 0.08);
+  left: -58px;
+  background: rgba(124, 58, 237);
+  opacity: 1;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -187832,4 +187878,5 @@ select {
     -webkit-line-clamp: unset;
   }
 }
+
 
