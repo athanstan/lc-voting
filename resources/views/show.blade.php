@@ -36,18 +36,27 @@
                         <div>&bull;</div>
                         <div class="text-gray-900">3 Comments</div>
                     </div>
-                    <div class="flex items-center space-x-2">
+                    <div
+                        x-data="{isOpen:false}"
+                        class="flex items-center space-x-2">
                         <div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                             Open
                         </div>
-                        <button class="relative bg-gray-100 border hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in px-3">
+                        <button
+                            @click="isOpen = !isOpen"
+                            class="relative bg-gray-100 border hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in px-3">
                             <svg class="" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <circle cx="5" cy="12" r="1"></circle>
                                 <circle cx="12" cy="12" r="1"></circle>
                                 <circle cx="19" cy="12" r="1"></circle>
                              </svg>
-                             <ul class="hidden absolute text-left w-44 font-semibold bg-white rounded-xl shadow-lg py-3 ml-8">
+                             <ul
+                                x-cloak
+                                x-show.transition.origin.top.left.duration.300ms="isOpen"
+                                @click.away="isOpen = false"
+                                @keydown.escape.window="isOpen = false"
+                                class="absolute text-left w-44 font-semibold bg-white rounded-xl shadow-lg py-3 ml-8">
                                  <li>
                                      <a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as Spam</a>
                                     </li>
@@ -65,12 +74,19 @@
 
     <div class="buttons-container flex items-center justify-between mt-6">
         <div class="flex items-center space-x-3 ml-6">
-            <div class="relative">
-                <button type="button"
-                        class="flex items-center h-11 w-32 justify-center text-white text-sm font-semibold rounded-xl bg-blue-500 border border-blue-500 hover:border-blue-800 py-3  transition duration-150 ease-in">
+            <div x-data="{isOpen:false}" class="relative">
+                <button
+                    @click="isOpen = !isOpen"
+                    type="button"
+                    class="flex items-center h-11 w-32 justify-center text-white text-sm font-semibold rounded-xl bg-blue-500 border border-blue-500 hover:border-blue-800 py-3  transition duration-150 ease-in">
                     Reply
                 </button>
-                <div class="hidden absolute z-10 w-104 text-left text-sm font-semibold bg-white shadow rounded-xl mt-2">
+                <div
+                    x-cloak
+                    x-show.transition.origin.top.left.duration.300ms="isOpen"
+                    @click.away="isOpen = false"
+                    @keydown.escape.window="isOpen = false"
+                    class="absolute z-10 w-104 text-left text-sm font-semibold bg-white shadow rounded-xl mt-2">
                     <form action="" class="space-y-4 px-4 py-6">
                         <textarea name="post_comment" id="post_comment" cols="30" rows="4"
                                 class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 border-none px-4 py-2"
@@ -95,15 +111,22 @@
                 </div>
             </div>
 
-            <div class="relative">
-                <button type="button" class="flex items-center h-11 w-36 justify-center text-sm bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 py-3 px-6 transition duration-150 ease-in">
+            <div x-data="{isOpen:false}" class="relative">
+                <button
+                    @click="isOpen = !isOpen"
+                    type="button" class="flex items-center h-11 w-36 justify-center text-sm bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 py-3 px-6 transition duration-150 ease-in">
                     <span>Set Status</span>
                     <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                       </svg>
                 </button>
 
-                <div class=" absolute z-10 w-72 text-left text-sm font-semibold bg-white shadow rounded-xl mt-2">
+                <div
+                    x-cloak
+                    x-show.transition.origin.top.left.duration.300ms="isOpen"
+                    @click.away="isOpen = false"
+                    @keydown.escape.window="isOpen = false"
+                    class=" absolute z-10 w-72 text-left text-sm font-semibold bg-white shadow rounded-xl mt-2">
                     <form action="" class="space-y-4 px-4 py-6">
                         <div class="mt-4 space-y-4">
                             <div class="flex items-center">
@@ -202,16 +225,21 @@
                             <div>&bull;</div>
                             <div>10 hours ago</div>
                         </div>
-                        <div class="flex items-center space-x-2">
+                        <div x-data="{isOpen:false}" class="flex items-center space-x-2">
 
-                            <button class="relative bg-gray-100 border hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in px-3">
+                            <button @click="isOpen = !isOpen" class="relative bg-gray-100 border hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in px-3">
                                 <svg class="" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <circle cx="5" cy="12" r="1"></circle>
                                     <circle cx="12" cy="12" r="1"></circle>
                                     <circle cx="19" cy="12" r="1"></circle>
                                  </svg>
-                                 <ul class="hidden absolute text-left w-44 font-semibold bg-white rounded-xl shadow-lg py-3 ml-8">
+                                 <ul
+                                    x-cloak
+                                    x-show.transition.origin.top.left.duration.300ms="isOpen"
+                                    @click.away="isOpen = false"
+                                    @keydown.escape.window="isOpen = false"
+                                    class="absolute text-left w-44 font-semibold bg-white rounded-xl shadow-lg py-3 ml-8 z-10">
                                      <li>
                                          <a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as Spam</a>
                                         </li>
