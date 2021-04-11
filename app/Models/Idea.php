@@ -42,4 +42,29 @@ class Idea extends Model
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * Get the status that owns the Idea
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
+
+    public function getStatusClasses()
+    {
+        // You can also store the classes in the database
+        $allStatuses = [
+            'Open'          => 'bg-gray-200',
+            'Considering'   => 'bg-purple-500 text-white',
+            'In Progress'   => 'bg-yellow-500 text-white',
+            'Implemented'   => 'bg-green-500 text-white',
+            'Closed'        => 'bg-red-500 text-white',
+        ];
+
+
+        return $allStatuses[$this->status->name];
+    }
+
 }
