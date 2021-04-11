@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\Idea;
+use App\Models\Category;
 use Tests\TestCase;
 
 class ShowIdeasTest extends TestCase
@@ -16,16 +17,21 @@ class ShowIdeasTest extends TestCase
     public function list_of_ideas_shows_on_main_page()
     {
 
-        $ideaOne = Idea::factory()->create([
+        $categoryOne = Category::factory()->create(['name' => 'Category 1']);
+        $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-            'title' => 'My first idea',
-            'description' => 'Description of My first idea',
+        $ideaOne     = Idea::factory()->create([
+
+            'title'         => 'My first idea',
+            'category_id'   => $categoryOne->id,
+            'description'   => 'Description of My first idea',
 
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        $ideaTwo     = Idea::factory()->create([
 
             'title' => 'My second idea',
+            'category_id'   => $categoryTwo->id,
             'description' => 'Description of My second idea',
 
         ]);
@@ -34,8 +40,10 @@ class ShowIdeasTest extends TestCase
 
         $response->assertSuccessful();
         $response->assertSee($ideaOne->title);
+        // $response->assertSee($ideaOne->category);
         $response->assertSee($ideaOne->description);
         $response->assertSee($ideaTwo->title);
+        // $response->assertSee($ideaTwo->category);
         $response->assertSee($ideaTwo->description);
     }
 
@@ -43,10 +51,12 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function single_idea_shows_correctly_on_show_page()
     {
+        $category = Category::factory()->create(['name' => 'Category 1']);
 
         $idea = Idea::factory()->create([
 
             'title' => 'My first idea',
+            'category_id'   => $category->id,
             'description' => 'Description of My first idea',
 
         ]);
