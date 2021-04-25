@@ -18,11 +18,21 @@
 
         <div class="border-r hidden md:block border-gray-100 px-5 py-8">
             <div class="text-center">
-                <div class="font-semibold text-2xl">{{ $idea->votes_count }}</div>
+                <div class="font-semibold @if($hasVoted) text-blue-500 @endif text-2xl">{{ $idea->votes_count }}</div>
                 <div class="text-gray-500">Votes</div>
             </div>
 
-            <div class="mt-8"><button class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400 font-bold text-xxs uppercase rounded-xl px-4 py-3 transition duration-150 ease-in">Vote</button>
+            <div class="mt-8">
+                @if ($hasVoted)
+                    <button class="w-20 bg-blue-500 border border-blue-200 hover:border-blue-400 text-white font-bold text-xxs uppercase rounded-xl px-4 py-3 transition duration-150 ease-in">
+                        Voted
+                    </button>
+                @else
+
+                    <button class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400 font-bold text-xxs uppercase rounded-xl px-4 py-3 transition duration-150 ease-in">
+                        Vote
+                    </button>
+                @endif
             </div>
         </div>
         <div class="flex flex-col md:flex-row flex-1 px-2 py-6">

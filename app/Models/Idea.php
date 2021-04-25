@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
+
 class Idea extends Model
 {
     use HasFactory;
@@ -75,6 +76,18 @@ class Idea extends Model
 
 
         return $allStatuses[$this->status->name];
+    }
+
+    public function isVotedByUser(?User $user)
+    {
+
+        if(!$user){
+            return false;
+        }
+
+        return Vote::where('user_id', $user->id)
+            ->where('idea_id', $this->id)
+            ->exists();
     }
 
 }
