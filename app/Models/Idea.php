@@ -52,6 +52,16 @@ class Idea extends Model
         return $this->belongsTo(Status::class);
     }
 
+    /**
+     * The votes that belong to the Idea
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function votes()
+    {
+        return $this->belongsToMany(User::class, 'votes');
+    }
+
     public function getStatusClasses()
     {
         // You can also store the classes in the database

@@ -51,6 +51,16 @@ class User extends Authenticatable
         return $this->hasMany(Idea::class);
     }
 
+    /**
+     * The votes that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function votes()
+    {
+        return $this->belongsToMany(Idea::class, 'votes');
+    }
+
     public function getAvatarAttribute()
     {
         $firstCharacter  = $this->email[0];

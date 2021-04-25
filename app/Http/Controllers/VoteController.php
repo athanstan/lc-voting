@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Idea;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 
-class IdeaController extends Controller
+class VoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +14,7 @@ class IdeaController extends Controller
      */
     public function index()
     {
-
-        // With Eager Loading
-        return view('idea.index', [
-            'ideas' => Idea::with('user', 'category', 'status')
-                ->withCount('votes')
-                ->orderBy('id', 'desc')
-                ->simplePaginate(10),
-        ]);
+        //
     }
 
     /**
@@ -48,26 +41,21 @@ class IdeaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Vote  $vote
      * @return \Illuminate\Http\Response
      */
-    public function show(Idea $idea)
+    public function show(Vote $vote)
     {
-
-        $idea = Idea::find($idea->id)->withCount('votes')->firstOrFail();
-
-        return view('idea.show', [
-            'idea' => $idea,
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Vote  $vote
      * @return \Illuminate\Http\Response
      */
-    public function edit(Idea $idea)
+    public function edit(Vote $vote)
     {
         //
     }
@@ -76,10 +64,10 @@ class IdeaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Vote  $vote
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Idea $idea)
+    public function update(Request $request, Vote $vote)
     {
         //
     }
@@ -87,10 +75,10 @@ class IdeaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Vote  $vote
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Idea $idea)
+    public function destroy(Vote $vote)
     {
         //
     }
