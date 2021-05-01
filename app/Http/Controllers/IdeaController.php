@@ -59,8 +59,10 @@ class IdeaController extends Controller
      */
     public function show(Idea $idea)
     {
-
-        $idea = Idea::find($idea->id)->withCount('votes')->firstOrFail();
+        $idea = Idea::query()
+            ->where('id', $idea->id)
+            ->withCount('votes')
+            ->firstOrFail();
 
         return view('idea.show', [
             'idea' => $idea,

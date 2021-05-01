@@ -1,7 +1,7 @@
 <div>
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div
-        x-data
+        {{-- x-data
         @click="
 
             const clicked = $event.target
@@ -12,7 +12,7 @@
             if (! ignores.includes(target)){
                 clicked.closest('.idea-container').querySelector('.idea-link').click()
             }
-        "
+        " --}}
         class="idea-container bg-white rounded-xl flex hover:shadow-md transition duration-150 ease-in cursor-pointer"
         >
 
@@ -25,13 +25,13 @@
             <div class="mt-8">
                 @if ($hasVoted)
                     <button
-                        wire:click.prevet="vote"
+                        wire:click.prevent="vote"
                         class="w-20 bg-blue-500 border border-blue-200 hover:border-blue-400 text-white font-bold text-xxs uppercase rounded-xl px-4 py-3 transition duration-150 ease-in">
                         Voted
                     </button>
                 @else
                     <button
-                        wire:click.prevet="vote"
+                        wire:click.prevent="vote"
                         class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400 font-bold text-xxs uppercase rounded-xl px-4 py-3 transition duration-150 ease-in">
                         Vote
                     </button>
@@ -40,7 +40,7 @@
         </div>
         <div class="flex flex-col md:flex-row flex-1 px-2 py-6">
             <div class="flex-none mx-4 md:mx-0">
-                <a href="#">
+                <a href="{{ route('idea.show', $idea) }}">
                     <img src="{{ $idea->user->avatar }}" alt="avatar" class="w-14 h-14 rounded-xl">
                 </a>
             </div>
@@ -92,6 +92,7 @@
                     </div>
 
                     <div class="md:hidden flex items-center mt-4 md:mt-0">
+
                             <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
                                 <div class="text-sm font-bold leading-none">{{ $votesCount }}</div>
                                 <div class="text-xxs font-semibold leading-none text-gray-400">
@@ -101,6 +102,7 @@
                             <button class="w-20 bg-gray-200 -mx-5  border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3">
                                 Vote
                             </button>
+
                     </div>
                 </div>
             </div>

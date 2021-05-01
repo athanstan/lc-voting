@@ -179,18 +179,22 @@
         <div class="flex items-center space-x-3">
             <div class="bg-white font-semibold text-center rounded-xl px-3 py-2">
                 <div class="text-xl @if ($hasVoted) text-blue-500 @endif leading-snug font-semibold">
-                    {{ $idea->votes_count }}
+                    {{ $votesCount }}
                     <div class="text-gray-400 text-xs leading-none">
                        Votes
                     </div>
                 </div>
             </div>
             @if ($hasVoted)
-                <button type="button" class=" h-11 w-32 justify-center text-white text-xs bg-blue-500 font-semibold rounded-xl border border-blue-200 hover:border-blue-400 py-3 px-6 transition duration-150 ease-in">
+                <button
+                    wire:click.prevent="vote"
+                    type="button" class=" h-11 w-32 justify-center text-white text-xs bg-blue-500 font-semibold rounded-xl border border-blue-200 hover:border-blue-400 py-3 px-6 transition duration-150 ease-in">
                     <span class="uppercase">Voted</span>
                 </button>
             @else
-                <button type="button" class=" h-11 w-32 justify-center text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 py-3 px-6 transition duration-150 ease-in">
+                <button
+                    wire:click.prevent="vote"
+                    type="button" class=" h-11 w-32 justify-center text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 py-3 px-6 transition duration-150 ease-in">
                     <span class="uppercase">Vote</span>
                 </button>
             @endif
