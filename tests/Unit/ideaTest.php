@@ -13,6 +13,11 @@ use App\Models\Idea;
 use App\Models\Status;
 use App\Models\Vote;
 
+
+# Exceptions
+use App\Exceptions\VoteNotFoundException;
+use App\Exceptions\DuplicateVoteException;
+
 class ideaTest extends TestCase
 {
 
@@ -96,6 +101,59 @@ class ideaTest extends TestCase
         $this->assertTrue($idea->isVotedByUser($user));
         $idea->removeVote($user);
         $this->assertFalse($idea->isVotedByUser($user));
+
+    }
+
+    /** @test */
+    public function voting_for_an_idea_that_is_already_voted_for_throws_an_exception()
+    {
+        $user = User::factory()->create();
+
+        $categoryOne = Category::factory()->create(['name' => 'Category 1']);
+
+        $statusOpen = Status::factory()->create(['name' => 'Open']);
+
+        $idea = Idea::factory()->create([
+            'user_id' => $user->id,
+            'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
+            'title' => 'My first title',
+            'description' => 'Some random description. ',
+        ]);
+
+        Vote::factory()->create([
+            'idea_id' => $idea->id,
+            'user_id' => $user->id,
+        ]);
+
+
+        $this->expectException(DuplicateVoteException::class);
+
+        $idea->vote($user);
+
+    }
+
+    /** @test */
+    public function removing_a_vote_that_does_not_exist_throws_an_exception()
+    {
+        $user = User::factory()->create();
+
+        $categoryOne = Category::factory()->create(['name' => 'Category 1']);
+
+        $statusOpen = Status::factory()->create(['name' => 'Open']);
+
+        $idea = Idea::factory()->create([
+            'user_id' => $user->id,
+            'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
+            'title' => 'My first title',
+            'description' => 'Some random description. ',
+        ]);
+
+
+        $this->expectException(VoteNotFoundException::class);
+
+        $idea->removeVote($user);
 
     }
 }

@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Idea;
 
+# Exceptions
+use App\Exceptions\VoteNotFoundException;
+use App\Exceptions\DuplicateVoteException;
+
 
 class IdeaShow extends Component
 {
@@ -31,14 +35,26 @@ class IdeaShow extends Component
 
         if($this->hasVoted){
             #Yes, Remove Vote
-            $this->idea->removeVote(Auth::user());
+            // dd('Voted');
+            try {
+                $this->idea->removeVote(Auth::user());
+            } catch (VoteNotFoundException $ex) {
+                // Do nothing.
+            }
+
             $this->votesCount--;
             $this->hasVoted = false;
+
         }else{
             #No, Add Vote
-            $this->idea->vote(Auth::user());
+            try {
+                $this->idea->vote(Auth::user());
+            } catch (DuplicateVoteException $ex) {
+                // Do nothing.
+            }
+
             $this->votesCount++;
-            $this->hasVoted = false;
+            $this->hasVoted = true;
         }
     }
 
