@@ -43,10 +43,15 @@
                         @endauth
                     </div>
                 @endif
-                <a href="#">
-                    <img    class="w-10 h-10 rounded-full flex"
-                            src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="avatar">
-                </a>
+
+                @auth
+                    <a href="#">
+                        <img class="w-10 h-10 rounded-full flex"
+                            src="{{ Auth::user()->avatar }}" alt="avatar">
+                    </a>
+                @else
+                    {{-- Show Nothing --}}
+                @endauth
             </div>
         </header>
 
