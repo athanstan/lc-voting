@@ -3,12 +3,14 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Idea;
 
 use Illuminate\Support\Facades\Route;
 
 class StatusFilters extends Component
 {
     public $status = 'All';
+    public $statusCount;
 
     protected $queryString = [
         'status' => ['except' => ''],
@@ -16,6 +18,9 @@ class StatusFilters extends Component
 
     public function mount()
     {
+
+        // $this->statusCount = Idea::selectRaw();
+
         if(Route::currentRouteName() === 'idea.show'){
             $this->status = null;
             $this->queryString = [];
@@ -25,6 +30,7 @@ class StatusFilters extends Component
     public function setStatus($newStatus)
     {
         $this->status = $newStatus;
+
 
         // if ($this->getPreviousRouteName() === 'idea.show') {
             return redirect()->route('idea.index', [

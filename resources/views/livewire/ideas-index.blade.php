@@ -41,6 +41,6 @@
     </div>
 
     <div class="my-8">
-        {{ $ideas->links() }}
+        {{-- {{ $ideas->links() }} --}}
     </div>
 </div>

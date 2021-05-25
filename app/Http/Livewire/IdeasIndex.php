@@ -11,18 +11,18 @@ use Livewire\WithPagination;
 
 class IdeasIndex extends Component
 {
-    // use WithPagination;
+    use WithPagination;
 
     public function render()
     {
 
-        $statuses = Status::pluck('id', 'name');
+        $statuses = Status::all()->pluck('id', 'name');
 
         return view('livewire.ideas-index',
         [
             'ideas' => Idea::with('user', 'category', 'status')
                 ->when(request()->status != 'All', function ($query) use ($statuses){
-                    return $query->where('status_id', $statuses->get($request()->status));
+                    return $query->where('status_id', $statuses->get(request()->status));
                 })
                 ->addSelect(['voted_by_user' => Vote::select('id')
                     ->where('user_id', auth()->id())
@@ -33,5 +33,6 @@ class IdeasIndex extends Component
                 ->simplePaginate(10),
         ]
     );
+
     }
 }
