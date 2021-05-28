@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Idea;
+use App\Models\Status;
 
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,7 @@ class StatusFilters extends Component
     public function mount()
     {
 
-        // $this->statusCount = Idea::selectRaw();
+        $this->statusCount = Status::getCount();
 
         if(Route::currentRouteName() === 'idea.show'){
             $this->status = null;
