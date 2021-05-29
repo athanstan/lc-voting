@@ -16,10 +16,12 @@ class IdeasIndex extends Component
 
     public $status = 'All';
     public $category;
+    public $filter;
 
     protected $queryString = [
         'status',
         'category',
+        'filter',
     ];
 
     protected $listeners = [
@@ -65,6 +67,14 @@ class IdeasIndex extends Component
                             ->pluck('id', 'name')
                             ->get($this->category)
                         );
+                })
+                ->when($this->filter && $this->filter == 'Top Voted', function ($query) {
+                    return $query
+                        ->orderByDesc('votes_count');
+                })
+                ->when($this->filter && $this->filter == 'My Ideas', function ($query) {
+                    return $query
+                        ->where('user_id', auth()->id());
                 })
                 ->addSelect(['voted_by_user' => Vote::select('id')
                     ->where('user_id', auth()->id())
