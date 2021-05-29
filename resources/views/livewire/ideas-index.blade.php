@@ -2,11 +2,13 @@
     {{-- Success is as dangerous as failure. --}}
     <div class="filters flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
         <div class="w-full md:w-1/3">
-            <select name="category" id="cateory" class="w-full rounded-xl border-none px-4 py-2">
-                <option value="Category one">Category one</option>
-                <option value="Category two">Category two</option>
-                <option value="Category three">Category three</option>
-                <option value="Category four">Category four</option>
+            <select wire:model="category" name="category" id="cateory" class="w-full rounded-xl border-none px-4 py-2">
+                <option value="All Categories">All Categories</option>
+                @foreach ($categories as $category)
+
+                <option value="{{ $category->name }}">{{ $category->name }}</option>
+
+                @endforeach
             </select>
         </div>
         <div class="w-full md:w-1/3">
@@ -41,7 +43,7 @@
     </div>
 
     <div class="my-8">
-        {{-- {{ $ideas->links() }} --}}
-        {{ $ideas->appends(request()->query())->links() }}
+        {{ $ideas->links() }}
+        {{-- {{ $ideas->appends(request()->query())->links() }} --}}
     </div>
 </div>
