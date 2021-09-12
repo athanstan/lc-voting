@@ -19,7 +19,7 @@ class StatusTest extends TestCase
     public function can_get_count_of_each_status()
     {
         $user = User::factory()->create();
-        $categoryOne = Category->factory()->create(['name', 'Category 1']);
+        // $categoryOne = Category->factory()->create(['name', 'Category 1']);
 
         $this->assertTrue(true);
     }
