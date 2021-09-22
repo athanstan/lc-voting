@@ -101,13 +101,13 @@
                         <span class="ml-1">Attach</span>
 
                     </button>
-                    <button type="submit" class="flex items-center h-11 w-1/2 justify-center text-white text-xs font-semibold rounded-xl bg-blue-500 border border-blue-500 hover:border-blue-800 py-3  transition duration-150 ease-in">
+                    <button type="submit" class="flex items-center h-11 w-1/2 justify-center text-white text-xs font-semibold rounded-xl bg-blue-500 border border-blue-500 hover:border-blue-800 py-3  transition duration-150 ease-in disabled:opacity-50">
                         Update
                     </button>
                 </div>
                 <div>
                     <label class="font-normal inline-flex items-center">
-                        <input type="checkbox" class="rounded bg-gray-200 border-none" name="notify_voters" checked="" >
+                        <input wire:model='notifyAllVoters' type="checkbox" class="rounded bg-gray-200 border-none" name="notify_voters"/>
                         <span  class="ml-2">Notify All Voters</span>
                     </label>
                 </div>
